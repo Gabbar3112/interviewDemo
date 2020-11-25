@@ -1,0 +1,67 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">Sign up</div>
+
+    <!-- Login Form -->
+    <form
+      class="form-signup"
+      #f="ngForm"
+      (ngSubmit)="f.form.valid && onSignUp()"
+    >
+      <div class="form-label-group">
+        <input
+          type="email"
+          id="email"
+          class="fadeIn second"
+          name="email"
+          [(ngModel)]="signUp.email"
+          placeholder="email"
+          required
+          #email="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+        />
+        <div *ngIf="f.submitted && email.invalid">
+          <p *ngIf="email.errors.required" class="text text-danger">
+            Email is required
+          </p>
+        </div>
+      </div>
+      <div class="form-label-group">
+        <input
+          type="password"
+          id="password"
+          class="fadeIn third"
+          name="password"
+          [(ngModel)]="signUp.password"
+          placeholder="password"
+          required
+          #password="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+        />
+        <div *ngIf="f.submitted && password.invalid">
+          <p *ngIf="password.errors.required" class="text text-danger">
+            Password is required
+          </p>
+        </div>
+      </div>
+      <div class="form-label-group">
+        <input type="password" [(ngModel)]="signUp.confirmpassword"
+               id="login-confirmpassword" class="fadeIn fourth" name="confirmpassword"
+               placeholder="Confirm Password" required #confirmpassword="ngModel" (change)="onConfirmPassword()"
+               [ngClass]="{ 'is-invalid': f.submitted && confirmpassword.invalid }">
+        <div *ngIf="f.submitted && confirmpassword.invalid">
+          <p class="text text-danger" *ngIf="confirmpassword.errors?.required">Confirm Password is required</p>
+        </div>
+        <div *ngIf="f.submitted && invalid">
+          <p class="text text-danger">Confirm Password is not match.</p>
+        </div>
+      </div>
+      <div class="form-label-group">
+        <input class="fadeIn fifth" type="submit" value="Sign up" />
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="product__list clearfix mt--30">
+      <!-- Start Single Category -->
+      <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12" *ngFor="let newA of newArrival">
+        <div class="category">
+          <div class="ht__cat__thumb">
+            <a (click)="photoClick(newA.product_id)" style="cursor: pointer">
+              <img src="../../assets/images/product/1.jpg" style="width: 100%; height: 345.17px !important;"
+                   alt="product images">
+            </a>
+          </div>
+          <div class="fr__hover__info">
+              <button style="cursor: pointer" (click)="addToBtn(newA.product_id, 'wishList')">add to cart</button>
+            
+          </div>
+          <div class="fr__product__inner">
+            <h4><a (click)="photoClick(newA.product_id)">{{newA.name}}</a></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

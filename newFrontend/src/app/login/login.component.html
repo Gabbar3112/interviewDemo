@@ -1,0 +1,55 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">Sign in</div>
+
+    <!-- Login Form -->
+    <form
+      class="form-signin"
+      #f="ngForm"
+      (ngSubmit)="f.form.valid && onLogin()"
+    >
+      <div class="form-label-group">
+        <input
+          type="email"
+          id="email"
+          class="fadeIn second"
+          name="email"
+          [(ngModel)]="signIn.email"
+          placeholder="email"
+          required
+          #email="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+        />
+        <div *ngIf="f.submitted && email.invalid">
+          <p *ngIf="email.errors.required" class="text text-danger">
+            Email is required
+          </p>
+        </div>
+      </div>
+      <div class="form-label-group">
+        <input
+          type="password"
+          id="password"
+          class="fadeIn third"
+          name="password"
+          [(ngModel)]="signIn.password"
+          placeholder="password"
+          required
+          #password="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+        />
+        <div *ngIf="f.submitted && password.invalid">
+          <p *ngIf="password.errors.required" class="text text-danger">
+            Password is required
+          </p>
+        </div>
+      </div>
+      <div class="form-label-group">
+        <input class="fadeIn fourth" type="submit" value="Log In" />
+      </div>
+    </form>
+  </div>
+</div>
